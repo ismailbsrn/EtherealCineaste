@@ -17,80 +17,62 @@
 </head>
 
 <body>
-    <?php include 'assets/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
 
     <div class="news-main">
         <br><br><br><br>
         <section class="news-section">
             <div class="news-container">
-                <div class="news">
-                    <div class="news-img">
-                        <img src="image/winterlight.jpeg" alt="" srcset="">
-                    </div>
-                    <div class="news-right">
-                        <div class="news-content">
-                            <h3>Haber başlığı</h3>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                                natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                                Accusantium
-                                repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                                Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                                fugiat minus nihil maiores nam.</p>
+                <?php
+                $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
 
-                        </div>
-                        <div class="news-footer">
-                            <a href="#" class="">habere git</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news">
-                    <div class="news-img">
-                        <img src="image/winterlight.jpeg" alt="" srcset="">
-                    </div>
-                    <div class="news-right">
-                        <div class="news-content">
-                            <h3>Haber başlığı</h3>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                                natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                                Accusantium
-                                repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                                Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                                fugiat minus nihil maiores nam.</p>
+                $result = $mysqli->query("SELECT * FROM movie_news ORDER BY id DESC LIMIT 6");
 
-                        </div>
-                        <div class="news-footer">
-                            <a href="#" class="">habere git</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news">
-                    <div class="news-img">
-                        <img src="image/winterlight.jpeg" alt="" srcset="">
-                    </div>
-                    <div class="news-right">
-                        <div class="news-content">
-                            <h3>Haber başlığı</h3>
-                            <br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                                natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                                Accusantium
-                                repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                                Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                                fugiat minus nihil maiores nam.</p>
+                if (!$result) {
+                    die("Failed to retrieve notes: " . $mysqli->error);
+                }
 
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+
+
+
+                    <div class="news">
+                        <div class="news-img">
+                            <?php
+
+                            $imageURL = str_replace('../', '', $row['card_image']);
+
+                            echo '<img src="' . $imageURL . '" alt="" />';
+
+                            ?>
                         </div>
-                        <div class="news-footer">
-                            <a href="#" class="">habere git</a>
+                        <div class="news-right">
+                            <div class="news-content">
+                                <h3>
+                                    <?php echo $row['news_title'] ?>
+                                </h3>
+                                <br>
+                                <p>
+                                    <?php $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                                        echo substr($content, 0, 200) ?>
+                                </p>
+
+                            </div>
+                            <div class="news-footer">
+                                <a href="#" class="read-more-link" data-movie-id="movie1"
+                                    onclick="window.location.href='contents/news.php?movieID=<?php echo $row['id']; ?>'">habere
+                                    git</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                <?php } ?>
             </div>
         </section>
     </div>
 
-    <?php include 'assets/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

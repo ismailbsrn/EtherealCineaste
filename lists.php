@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php include 'assets/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <br><br><br><br><br>
     <section class="list-section">
         <div class="list-container">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="list-right">
                     <div class="list-content">
-                        <h3>Haber başlığı</h3>
+                        <h3>liste başlığı</h3>
                         <br>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
                             natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
@@ -38,7 +38,7 @@
 
                     </div>
                     <div class="list-footer">
-                        <a href="#" class="">habere git</a>
+                        <a href="#" class="">listeye git</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="list-right">
                     <div class="list-content">
-                        <h3>Haber başlığı</h3>
+                        <h3>liste başlığı</h3>
                         <br>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
                             natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
@@ -59,7 +59,7 @@
 
                     </div>
                     <div class="list-footer">
-                        <a href="#" class="">habere git</a>
+                        <a href="#" class="">listeye git</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="list-right">
                     <div class="list-content">
-                        <h3>Haber başlığı</h3>
+                        <h3>liste başlığı</h3>
                         <br>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
                             natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
@@ -80,13 +80,13 @@
 
                     </div>
                     <div class="list-footer">
-                        <a href="#" class="">habere git</a>
+                        <a href="#" class="">listeye git</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <?php include 'assets/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

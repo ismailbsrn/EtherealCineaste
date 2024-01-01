@@ -17,113 +17,56 @@
 </head>
 
 <body>
-    <?php include 'assets/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <br><br><br><br>
     <section class="articles">
         <div class="article-container">
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            <?php
+            // Connect to the MySQL server
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
+            // Get the last 6 rows from the movie_reviews table
+            $result = $mysqli->query("SELECT * FROM movie_reviews ORDER BY id DESC LIMIT 6");
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            // Check for errors
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            // Loop through the result and display the rows
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="article">
+                    <div class="article-img">
+                        <?php
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        $imageURL = str_replace('../', '', $row['card_image']);
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        echo '<img src="' . $imageURL . '" alt="" />';
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        ?>
+                    </div>
+                    <div class="article-content">
+                        <h3>
+                            <?php echo $row['movie_name'] ?>
+                        </h3>
+                        <br>
+                        <p>
+                            <?php
+                            $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                            echo substr($content, 0, 200);
+                            ?>
+                        </p>
 
+                    </div>
+                    <div class="article-footer">
+                        <a href="#" class="read-more-link" data-movie-id="movie1"
+                            onclick="window.location.href='contents/review.php?movieID=<?php echo $row['id']; ?>'">devamını
+                            gör</a>
+                    </div>
                 </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-
+                <?php
+            }
+            ?>
         </div>
         <div class="articles-footer">
             <div class="articles-footer-btn">
@@ -131,7 +74,15 @@
             </div>
         </div>
     </section>
-    <?php include 'assets/footer.php'; ?>
+    <div id="markdown-container"></div>
+
+
+    <?php include 'partials/footer.php'; ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/main.js"></script>
 </body>
 
 </html>

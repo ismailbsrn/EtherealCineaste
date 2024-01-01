@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethereal Cinéaste</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Google Fonts and Icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,123 +16,93 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-    <?php include 'assets/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
 
-    <section class="slider">
+    <!-- Slider main container -->
+    <div class="swiper" id="hero-slider">
+        <!-- Wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="image/slider/persona.jpg" alt="">
+                </div>
+                <div class="slide-content">
 
-    </section>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="image/slider/seventhseal.jpg" alt="">
+                </div>
+                <div class="slide-content">
 
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="image/slider/satantango.jpg" alt="">
+                </div>
+                <div class="slide-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
     <section class="articles">
-        <h2 class="articles-title">İNCELEMELER</h2>
         <div class="article-container">
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            <?php
+            // Connect to the MySQL server
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
+            // Get the last 6 rows from the movie_reviews table
+            $result = $mysqli->query("SELECT * FROM movie_reviews ORDER BY id DESC LIMIT 6");
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            // Check for errors
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+            // Loop through the result and display the rows
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="article">
+                    <div class="article-img">
+                        <?php
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        $imageURL = str_replace('../', '', $row['card_image']);
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        echo '<img src="' . $imageURL . '" alt="" />';
 
-                </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-            <div class="article">
-                <div class="article-img">
-                    <img src="image/winterlight.jpeg" alt="" srcset="">
-                </div>
-                <div class="article-content">
-                    <h3>Film İsmi</h3>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia quasi qui aliquam
-                        blanditiis
-                        obcaecati iste dolor, vel dicta ea labore rem ad quaerat, optio unde similique, soluta pariatur
-                        ipsam debitis. Minima doloribus consequuntur tempora?</p>
+                        ?>
+                    </div>
+                    <div class="article-content">
+                        <h3>
+                            <?php echo $row['movie_name'] ?>
+                        </h3>
+                        <br>
+                        <p>
+                            <?php
+                            $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                            echo substr($content, 0, 200);
+                            ?>
+                        </p>
 
+                    </div>
+                    <div class="article-footer">
+                        <a href="#" class="read-more-link" data-movie-id="movie1"
+                            onclick="window.location.href='reviews/review.php?movieID=<?php echo $row['id']; ?>'">devamını
+                            gör</a>
+                    </div>
                 </div>
-                <div class="article-footer">
-                    <a href="#" class="">devamını gör</a>
-                </div>
-            </div>
-
+                <?php
+            }
+            ?>
         </div>
         <div class="articles-footer">
             <div class="articles-footer-btn">
@@ -141,77 +115,190 @@
         <div class="on-show-title">
             <h3>VİZYONDAKİLER</h3>
         </div>
-        <div class="slider-area">
-            <h1>slider</h1>
+        <!-- Slider main container -->
+        <div class="swiper" id="on-show-slider">
+            <!-- Wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="on-show-slider-card">
+                        <div class="on-show-slider-card-image">
+                            <img src="image/dogville.jpeg" alt="">
+                        </div>
+                        <div class="on-show-slider-card-top-layer">
+                            <div class="on-show-slider-card-symbols">
+
+                            </div>
+                            <div class="on-show-slider-card-text">
+
+                            </div>
+                            <div class="on-show-slider-card-top-layer-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
 
     </section>
 
     <section class="news-section">
-        <div class="news-title">
-            <h3>HABERLER</h3>
-        </div>
+
         <div class="news-container">
-            <div class="news">
-                <div class="news-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="news-right">
-                    <div class="news-content">
-                        <h3>Haber başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel! Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            <br><br>
+            <?php
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
 
-                    </div>
-                    <div class="news-footer">
-                        <a href="#" class="">habere git</a>
-                    </div>
-                </div>
-            </div>
-            <div class="news">
-                <div class="news-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="news-right">
-                    <div class="news-content">
-                        <h3>Haber başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel! Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            $result = $mysqli->query("SELECT * FROM movie_news ORDER BY id DESC LIMIT 6");
 
-                    </div>
-                    <div class="news-footer">
-                        <a href="#" class="">habere git</a>
-                    </div>
-                </div>
-            </div>
-            <div class="news">
-                <div class="news-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="news-right">
-                    <div class="news-content">
-                        <h3>Haber başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel! Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
+            while ($row = $result->fetch_assoc()) {
+                ?>
+
+
+
+                <div class="news">
+                    <div class="news-img">
+                        <?php
+
+                        $imageURL = str_replace('../', '', $row['card_image']);
+
+                        echo '<img src="' . $imageURL . '" alt="" />';
+
+                        ?>
                     </div>
-                    <div class="news-footer">
-                        <a href="#" class="">habere git</a>
+                    <div class="news-right">
+                        <div class="news-content">
+                            <h3>
+                                <?php echo $row['news_title'] ?>
+                            </h3>
+                            <br>
+                            <p>
+                                <?php $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                                    echo substr($content, 0, 200) ?>
+                            </p>
+
+                        </div>
+                        <div class="news-footer">
+                            <a href="#" class="read-more-link" data-movie-id="movie1"
+                                onclick="window.location.href='contents/news.php?movieID=<?php echo $row['id']; ?>'">habere
+                                git</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            <?php } ?>
         </div>
         <div class="news-section-footer">
             <div class="news-section-footer-btn">
@@ -220,7 +307,7 @@
         </div>
     </section>
 
-    <?php include 'assets/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/main.js"></script>

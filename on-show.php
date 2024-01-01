@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php include 'assets/header.php'; ?>
+    <?php include 'partials/header.php'; ?>
     <div class="on-show-main">
         <div class="on-show-container">
             <div class="on-show-card">
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    <?php include 'assets/footer.php'; ?>
+    <?php include 'partials/footer.php'; ?>
 </body>
 
 </html>

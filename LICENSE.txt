@@ -1,0 +1,6 @@
+Telif Hakkı © 2023 İsmail Başaran
+
+Bu yazılımın tüm hakları saklıdır. Bu yazılımın herhangi bir kısmını kopyalamak,
+modifiye etmek, birleştirmek, yaymak, alt lisanslamak veya satmak için önce
+yazılı izin almanız gerekmektedir. İzin almak için bsrn.ismail@gmail.com
+ile iletişime geçebilirsiniz.
