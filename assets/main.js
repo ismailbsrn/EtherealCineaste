@@ -25,13 +25,13 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     direction: 'horizontal',
     loop: true,
-    autoplay: {
-      delay: 1000,
-    },
-    autoplay: {
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+    // autoplay: {
+    //   delay: 1000,
+    // },
+    // autoplay: {
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: true,
+    // },
 
     centeredSlides: true,
 

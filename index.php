@@ -127,10 +127,14 @@
                         </div>
                         <div class="on-show-slider-card-top-layer">
                             <div class="on-show-slider-card-symbols">
-
+                                <img src="./assets/content-rating-system/13yas.png" alt="">
+                                <!-- <img src="./assets/content-rating-system/olumsuz.png" alt=""> -->
                             </div>
                             <div class="on-show-slider-card-text">
-
+                                <h3>Dogville</h3>
+                                <h4>Yönetmen: Lars von Trier</h4>
+                                <p>Süre: 178 dakika</p>
+                                <p>imdb: 8.0</p>
                             </div>
                             <div class="on-show-slider-card-top-layer-btn">
                             </div>
@@ -154,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <!-- <div class="swiper-slide">
                     <div class="on-show-slider-card">
                         <div class="on-show-slider-card-image">
                             <img src="image/dogville.jpeg" alt="">
@@ -170,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="swiper-slide">
                     <div class="on-show-slider-card">
                         <div class="on-show-slider-card-image">

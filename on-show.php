@@ -26,7 +26,7 @@
                 </div>
                 <div class="on-show-card-top-layer">
                     <div class="on-show-card-symbols">
-
+                        
                     </div>
                     <div class="on-show-card-text">
                         <h3>Dogville</h3>
