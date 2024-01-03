@@ -234,6 +234,7 @@ section.on-show .on-show-title h3 {
 #hero-slider {
     width: 90%;
     height: 100%;
+    cursor: pointer;
 }
 
 #hero-slider .slide-image {
@@ -268,6 +269,7 @@ section.on-show .on-show-title h3 {
 #on-show-slider .on-show-slider-card:hover {
     width: 320px;
     height: 480px;
+    cursor: pointer;
 }
 
 #on-show-slider .on-show-slider-card .on-show-slider-card-image {

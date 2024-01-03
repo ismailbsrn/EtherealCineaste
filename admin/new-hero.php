@@ -8,11 +8,11 @@
         <form method="post">
             <div class="mb-3">
                 <label for="image_editor" class="form-label">Görsel</label>
-                <textarea class="form-control" id="image_editor" name="image_editor" rows="6"></textarea>
+                <textarea class="form-control" id="image_editor" name="image_editor"></textarea>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Görsel Açıklaması</label>
-                <textarea class="form-control" id="description" name="description" rows="6"></textarea>
+                <textarea class="form-control" id="description" name="description" rows="1"></textarea>
             </div>
             <button type="submit" id="save-btn" class="btn btn-secondary">
                 Submit
@@ -26,7 +26,7 @@
     $(document).ready(function () {
         $('#image_editor').summernote({
             tabsize: 2,
-            height: 100,
+            height: 20,
             toolbar: [
                 // ['style', ['style']],
                 // ['font', ['bold', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript', 'clear']],
@@ -34,7 +34,7 @@
                 // ['color', ['color']],
                 // ['para', ['ul', 'ol', 'paragraph']],
                 // ['table', ['table']],
-                ['insert', ['link', 'picture', 'video', 'hr']],
+                ['insert', ['picture']],
                 // ['view', ['fullscreen', 'codeview', 'help']]
             ],
             callbacks: {

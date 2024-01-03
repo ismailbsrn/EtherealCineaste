@@ -28,28 +28,34 @@
         <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide">
-                <div class="slide-image">
-                    <img src="image/slider/persona.jpg" alt="">
-                </div>
-                <div class="slide-content">
+                <a href="">
+                    <div class="slide-image">
+                        <img src="image/slider/persona.jpg" alt="">
+                    </div>
+                    <div class="slide-content">
 
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="swiper-slide">
-                <div class="slide-image">
-                    <img src="image/slider/seventhseal.jpg" alt="">
-                </div>
-                <div class="slide-content">
+                <a href="">
+                    <div class="slide-image">
+                        <img src="image/slider/seventhseal.jpg" alt="">
+                    </div>
+                    <div class="slide-content">
 
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="swiper-slide">
-                <div class="slide-image">
-                    <img src="image/slider/satantango.jpg" alt="">
-                </div>
-                <div class="slide-content">
+                <a href="">
+                    <div class="slide-image">
+                        <img src="image/slider/satantango.jpg" alt="">
+                    </div>
+                    <div class="slide-content">
 
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -113,136 +119,97 @@
 
     <section class="on-show">
         <div class="on-show-title">
-            <h3>VİZYONDAKİLER</h3>
+            <h3>VİZYONDAKİ FİLMLER</h3>
         </div>
         <!-- Slider main container -->
         <div class="swiper" id="on-show-slider">
             <!-- Wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-                                <img src="./assets/content-rating-system/13yas.png" alt="">
-                                <!-- <img src="./assets/content-rating-system/olumsuz.png" alt=""> -->
+                <?php
+                // Connect to the MySQL server
+                $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
+                // Get the last 10 rows from the movie_reviews table
+                $result = $mysqli->query("SELECT * FROM on_show_movie ORDER BY id DESC LIMIT 10");
+
+                // Check for errors
+                if (!$result) {
+                    die("Failed to retrieve notes: " . $mysqli->error);
+                }
+
+
+                // Loop through the result and display the rows
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+
+                    <div class="swiper-slide">
+                        <a href="#">
+                        <div class="on-show-slider-card">
+                            <div class="on-show-slider-card-image">
+                                <?php
+
+                                $imageURL = str_replace('../', '', $row['card_image']);
+
+                                echo '<img src="' . $imageURL . '" alt="" />';
+
+                                ?>
                             </div>
-                            <div class="on-show-slider-card-text">
-                                <h3>Dogville</h3>
-                                <h4>Yönetmen: Lars von Trier</h4>
-                                <p>Süre: 178 dakika</p>
-                                <p>imdb: 8.0</p>
+                            <div class="on-show-slider-card-top-layer">
+                                <div class="on-show-slider-card-symbols">
+                                    <?php
+                                    function getSymbolPath($tag)
+                                    {
+                                        $symbolPaths = [
+                                            '18yasveuzeri' => './assets/content-rating-system/18yas.png',
+                                            'cinsellik' => './assets/content-rating-system/cinsellik.png',
+                                            'siddet' => './assets/content-rating-system/siddet.png',
+                                            'olumsuz' => './assets/content-rating-system/olumsuz.png',
+                                            // Add more mappings as needed
+                                        ];
+
+                                        // Check if the tag exists in the mapping, if not, use a default symbol
+                                        return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
+                                    }
+                                    ?>
+
+                                    <?php
+
+                                    // Get the content rating tags from the database
+                                    $contentRatingTags = $row['content_rating_tags'];
+
+                                    // Split the tags into an array
+                                    $tagsArray = explode(',', $contentRatingTags);
+
+                                    // Loop through each tag and display the corresponding symbol
+                                    foreach ($tagsArray as $tag) {
+                                        // Map the tag to the corresponding symbol file path
+                                        $symbolPath = getSymbolPath($tag);
+
+                                        // Display the symbol image
+                                        echo '<img src="' . $symbolPath . '" alt="' . $tag . '" />';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="on-show-slider-card-text">
+                                    <h3>
+                                        <?php echo $row['movie_name'] ?>
+                                    </h3>
+                                    <h4>
+                                        <?php echo $row['director_name'] ?>
+                                    </h4>
+                                    <p>
+                                        <?php echo $row['genres']; ?>
+                                    </p>
+                                </div>
+                                
                             </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
+                        </a>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
+                    <?php
+                }
+                ?>
 
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="on-show-slider-card">
-                        <div class="on-show-slider-card-image">
-                            <img src="image/dogville.jpeg" alt="">
-                        </div>
-                        <div class="on-show-slider-card-top-layer">
-                            <div class="on-show-slider-card-symbols">
-
-                            </div>
-                            <div class="on-show-slider-card-text">
-
-                            </div>
-                            <div class="on-show-slider-card-top-layer-btn">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- Pagination -->
             <div class="swiper-pagination"></div>
