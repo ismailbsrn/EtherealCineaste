@@ -15,26 +15,37 @@
                 <textarea class="form-control" id="director_name" rows="1"></textarea>
             </div>
             <div class="mb-3">
-                <label for="movie_card_image" class="form-label">Film Kart Görseli</label>
+                <label for="movie_card_image" class="form-label">Film Afişi / Kart Görseli</label>
                 <textarea class="form-control" id="movie_card_image" name="movie_card_image" rows="1"></textarea>
             </div>
             <div class="mb-3">
-            <label for="image_location" class="form-label">Görselin Konumu</label>
-                <textarea class="form-control" id="image_location" name="image_location"
-                    rows="1" disabled></textarea>
+                <label for="image_location" class="form-label">Görselin Konumu</label>
+                <textarea class="form-control" id="image_location" name="image_location" rows="1" disabled></textarea>
             </div>
             <div class="mb-3">
-                <label for="content_rating_tags" class="form-label">Uygunluk Etiketleri</label>
-                <textarea class="form-control" id="content_rating_tags" rows="1"></textarea>
+                <label for="date" class="form-label">Vizyon Tarihi</label>
+                <div class="input-group date" id="datepicker">
+                    <input type="text" class="form-control" id="date" />
+                    <span class="input-group-append">
+                        <span class="input-group-text bg-light d-block">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="genres" class="form-label">Tür</label>
-                <textarea class="form-control" id="genres" rows="1"></textarea>
-            </div>
-            <button type="submit" id="save-btn" class="btn btn-secondary" data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">
-                Submit
-            </button>
+        </form>
+        <div class="mb-3">
+            <label for="content_rating_tags" class="form-label">Uygunluk Etiketleri</label>
+            <textarea class="form-control" id="content_rating_tags" rows="1"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="genres" class="form-label">Tür</label>
+            <textarea class="form-control" id="genres" rows="1"></textarea>
+        </div>
+        <button type="submit" id="save-btn" class="btn btn-secondary" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">
+            Submit
+        </button>
         </form>
 
     </div>
@@ -42,6 +53,7 @@
 
 <script>
     $(document).ready(function () {
+        $('#datepicker').datepicker();
 
         $('#movie_card_image').summernote({
             tabsize: 2,
@@ -87,7 +99,7 @@
             var genres = $('#genres').val();
             //var dataString = 'movie_review_editor=' + encodeURIComponent(movie_review_editor) + '&movie_name=' + encodeURIComponent(movie_name) + '&review_title=' + encodeURIComponent(review_title) + '&card_content=' + encodeURIComponent(card_content) + '&movie_review_card_image=' + encodeURIComponent(movie_review_card_image);
             var dataString = 'movie_name=' + encodeURIComponent(movie_name) + '&director_name=' + encodeURIComponent(director_name) + '&card_image=' + encodeURIComponent(card_image) + '&content_rating_tags=' + encodeURIComponent(content_rating_tags) + '&genres=' + encodeURIComponent(genres);
-            if (movie_name == '' || director_name == '' || content_rating_tags == '' || genres == '' || card_image == '' ) {
+            if (movie_name == '' || director_name == '' || content_rating_tags == '' || genres == '' || card_image == '') {
                 $(".alert-box").html("<div class=\"alert alert-danger\">Tüm alanları doldurunuz</div>");
             }
             else {

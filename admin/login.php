@@ -7,11 +7,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: black">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="card">
+                <div class="card rounded">
                     <div class="card-header">
                         <h4 class="text-center">Admin Login</h4>
                     </div>
@@ -29,7 +29,7 @@
                                 <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
                                 <label class="form-check-label" for="rememberMe">Remember Me</label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-dark btn-block">Login</button>
                         </form>
                     </div>
                 </div>

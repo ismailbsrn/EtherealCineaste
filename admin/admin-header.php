@@ -1,3 +1,16 @@
+<?php
+// admin_dashboard.php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit();
+}
+// Rest of the admin dashboard code
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,10 +43,19 @@
     <!-- SummerNote -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <!-- Datepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"
+        integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black">
         <a class="navbar-brand" href="#">Ethereal Cineaste</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,13 +82,23 @@
                         <a class="dropdown-item" href="new-hero.php">Hero</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="new-list.php">List</a>
+                        <?php
+                        if (isset($_SESSION['root'])) {
+                            if ($_SESSION['root'] == 1) {
+                                echo '<div class="dropdown-divider"></div>';
+                                echo '<a class="dropdown-item" href="add-admin.php">Admin</a>';
+                            }
+                        }
+                        ?>
+
                     </div>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="signout.php">Sign Out</a>
+                    <a class="nav-link text-white" href="signout.php">Sign Out</a>
                 </li>
             </ul>
         </div>
+
     </nav>

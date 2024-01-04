@@ -24,6 +24,9 @@ $result = mysqli_query($connection, $query);
 if ($row = mysqli_fetch_assoc($result)) {
     if ($password == $row['password']) {
         $_SESSION['admin_id'] = $row['id'];
+        $_SESSION['admin_name'] = $row['name'];
+        $_SESSION['admin_surname'] = $row['surname'];
+        $_SESSION['root'] = $row['root'];
 
         // Set cookie if "Remember Me" is checked
         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {

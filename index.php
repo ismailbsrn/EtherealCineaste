@@ -140,83 +140,86 @@
 
                 // Loop through the result and display the rows
                 while ($row = $result->fetch_assoc()) {
+                    if ($row['on_show'] == 0) {
+                        continue;
+                    }
                     ?>
 
                     <div class="swiper-slide">
                         <a href="#">
-                        <div class="on-show-slider-card">
-                            <div class="on-show-slider-card-image">
-                                <?php
-
-                                $imageURL = str_replace('../', '', $row['card_image']);
-
-                                echo '<img src="' . $imageURL . '" alt="" />';
-
-                                ?>
-                            </div>
-                            <div class="on-show-slider-card-top-layer">
-                                <div class="on-show-slider-card-symbols">
-                                    <?php
-                                    function getSymbolPath($tag)
-                                    {
-                                        $symbolPaths = [
-                                            '18yasveuzeri' => './assets/content-rating-system/18yas.png',
-                                            'cinsellik' => './assets/content-rating-system/cinsellik.png',
-                                            'siddet' => './assets/content-rating-system/siddet.png',
-                                            'olumsuz' => './assets/content-rating-system/olumsuz.png',
-                                            // Add more mappings as needed
-                                        ];
-
-                                        // Check if the tag exists in the mapping, if not, use a default symbol
-                                        return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
-                                    }
-                                    ?>
-
+                            <div class="on-show-slider-card">
+                                <div class="on-show-slider-card-image">
                                     <?php
 
-                                    // Get the content rating tags from the database
-                                    $contentRatingTags = $row['content_rating_tags'];
+                                    $imageURL = str_replace('../', '', $row['card_image']);
 
-                                    // Split the tags into an array
-                                    $tagsArray = explode(',', $contentRatingTags);
+                                    echo '<img src="' . $imageURL . '" alt="" />';
 
-                                    // Loop through each tag and display the corresponding symbol
-                                    foreach ($tagsArray as $tag) {
-                                        // Map the tag to the corresponding symbol file path
-                                        $symbolPath = getSymbolPath($tag);
-
-                                        // Display the symbol image
-                                        echo '<img src="' . $symbolPath . '" alt="' . $tag . '" />';
-                                    }
                                     ?>
                                 </div>
-                                <div class="on-show-slider-card-text">
-                                    <h3>
-                                        <?php echo $row['movie_name'] ?>
-                                    </h3>
-                                    <h4>
-                                        <?php echo $row['director_name'] ?>
-                                    </h4>
-                                    <p>
-                                        <?php echo $row['genres']; ?>
-                                    </p>
+                                <div class="on-show-slider-card-top-layer">
+                                    <div class="on-show-slider-card-symbols">
+                                        <?php
+                                        function getSymbolPath($tag)
+                                        {
+                                            $symbolPaths = [
+                                                '18yasveuzeri' => './assets/content-rating-system/18yas.png',
+                                                'cinsellik' => './assets/content-rating-system/cinsellik.png',
+                                                'siddet' => './assets/content-rating-system/siddet.png',
+                                                'olumsuz' => './assets/content-rating-system/olumsuz.png',
+                                                // Add more mappings as needed
+                                            ];
+
+                                            // Check if the tag exists in the mapping, if not, use a default symbol
+                                            return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
+                                        }
+                                        ?>
+
+                                        <?php
+
+                                        // Get the content rating tags from the database
+                                        $contentRatingTags = $row['content_rating_tags'];
+
+                                        // Split the tags into an array
+                                        $tagsArray = explode(',', $contentRatingTags);
+
+                                        // Loop through each tag and display the corresponding symbol
+                                        foreach ($tagsArray as $tag) {
+                                            // Map the tag to the corresponding symbol file path
+                                            $symbolPath = getSymbolPath($tag);
+
+                                            // Display the symbol image
+                                            echo '<img src="' . $symbolPath . '" alt="' . $tag . '" />';
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="on-show-slider-card-text">
+                                        <h3>
+                                            <?php echo $row['movie_name'] ?>
+                                        </h3>
+                                        <h4>
+                                            <?php echo $row['director_name'] ?>
+                                        </h4>
+                                        <p>
+                                            <?php echo $row['genres']; ?>
+                                        </p>
+                                    </div>
+
                                 </div>
-                                
-                            </div>
                         </a>
-                        </div>
                     </div>
-                    <?php
+                </div>
+                <?php
                 }
                 ?>
 
-            </div>
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
 
-            <!-- Navigation -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+        <!-- Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
         </div>
 
     </section>
