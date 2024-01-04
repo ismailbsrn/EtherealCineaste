@@ -34,6 +34,53 @@
     text-decoration: none;
 }
 
+
+@media screen and (max-width: 768px) {
+    header h1 {
+        width: 250px !important;
+        height: 45px !important;
+    }
+
+    header h1 a {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        text-indent: -9999px;
+        background: url(../assets/test.svg) no-repeat center !important;
+        background-size: contain;
+    }
+
+    header .header-container nav ul li:last-child {
+        margin-top: 5px !important;
+    }
+    header .header-container {
+        width: 97% !important;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    header .header-container nav ul li:not(:last-child) {
+        display: none;
+    }
+
+    header .header-container nav ul li:last-child {
+        display: block;
+        margin-top: 15px;
+    }
+    #hero-slider {
+        width: 100% !important;
+        height: 100%;
+        cursor: pointer;
+    }
+
+}
+
+@media screen and (min-width: 1081px) {
+    header .header-container nav ul li:last-child {
+        display: none;
+    }
+}
+
 body {
     background-color: var(--dark-color);
 }
@@ -78,6 +125,42 @@ header nav ul li a {
     color: var(--white-low-alpha);
     font-size: 20px;
     font-weight: 400;
+}
+
+.mobile-menu {
+    z-index: 9999 !important;
+    margin-top: 70px !important;
+    width: 100% !important;
+    height: 100px !important;
+    display: none !important;
+    flex-direction: column !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    background: var(--dark-color) !important;
+    position: absolute !important;
+}
+
+.mobile-menu li {
+    width: 100% !important;
+    height: 25px !important;
+    display: none !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.mobile-menu li:last-child {
+    margin-bottom: 10px !important;
+}
+
+.mobile-menu a {
+    color: var(--white-low-alpha) !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+}
+
+.mobile-dropdown-menu.menu-open {
+    display: flex !important; /* --------------------------------------------------------------------------------------------------------------*/
 }
 
 .swiper {

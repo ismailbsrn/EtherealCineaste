@@ -64,7 +64,7 @@ if (!isset($_SESSION['admin_id'])) {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
@@ -95,6 +95,9 @@ if (!isset($_SESSION['admin_id'])) {
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="../">Goto Site</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="signout.php">Sign Out</a>
                 </li>

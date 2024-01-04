@@ -9,8 +9,16 @@
                 <li><a href="reviews.php">incelemeler</a></li>
                 <li><a href="news.php">haberler</a></li>
                 <li><a href="lists.php">listeler</a></li>
-                <li><a href="#"><span class="material-symbols-outlined theme-btn">light_mode</span></a></li>
+                <li><a href="#"><span class="material-symbols-outlined sandvich-menu-button">menu</span></a></li>
             </ul>
         </nav>
+    </div>
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="on-show.php">vizyondaki filmler</a></li>
+            <li><a href="reviews.php">incelemeler</a></li>
+            <li><a href="news.php">haberler</a></li>
+            <li><a href="lists.php">listeler</a></li>
+        </ul>
     </div>
 </header>

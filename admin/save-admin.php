@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit();
+}
 // Database connection details
 $host = 'localhost';
 $user = 'root';
@@ -22,7 +28,7 @@ $passwordCheck = $_POST['password_check'];
 $deleteAuthority = $_POST['delete_authority'];
 
 // Hash the password before storing it in the database
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 29]);
+$hashedPassword = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
 
 // Insert the new admin into the database
 $query = "INSERT INTO admins (name, surname, username, password, delete_authority) VALUES ('$adminName', '$adminSurname', '$username', '$hashedPassword', '$deleteAuthority')";

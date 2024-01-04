@@ -3,8 +3,12 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 // Check if the admin is logged in and has "root" access
-if ($_SESSION['root'] != 1) {
-    die("Unauthorized access");
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php");
+    exit();
+}
+if( $_SESSION['root'] != 1){
+    die("You don't have permission to access this page.");
 }
 
 ?>
