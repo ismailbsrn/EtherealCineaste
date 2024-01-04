@@ -21,69 +21,45 @@
     <br><br><br><br><br>
     <section class="list-section">
         <div class="list-container">
-            <div class="list">
-                <div class="list-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="list-right">
-                    <div class="list-content">
-                        <h3>liste başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                            Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            <?php
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
 
-                    </div>
-                    <div class="list-footer">
-                        <a href="#" class="">listeye git</a>
-                    </div>
-                </div>
-            </div>
-            <div class="list">
-                <div class="list-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="list-right">
-                    <div class="list-content">
-                        <h3>liste başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                            Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            $result = $mysqli->query("SELECT * FROM lists ORDER BY id DESC LIMIT 6");
 
-                    </div>
-                    <div class="list-footer">
-                        <a href="#" class="">listeye git</a>
-                    </div>
-                </div>
-            </div>
-            <div class="list">
-                <div class="list-img">
-                    <img src="image/satantango2.jpg" alt="" srcset="">
-                </div>
-                <div class="list-right">
-                    <div class="list-content">
-                        <h3>liste başlığı</h3>
-                        <br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi rerum maiores nam
-                            natus. Distinctio necessitatibus odio modi quibusdam reiciendis voluptatum vel!
-                            Accusantium
-                            repudiandae placeat a pariatur officiis harum architecto provident similique at magni.
-                            Veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, temporibus
-                            fugiat minus nihil maiores nam.</p>
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="list">
+                    <div class="list-img">
+                        <?php
+
+                        $imageURL = str_replace('../', '', $row['card_image']);
+
+                        echo '<img src="' . $imageURL . '" alt="" />';
+
+                        ?>
                     </div>
-                    <div class="list-footer">
-                        <a href="#" class="">listeye git</a>
+                    <div class="list-right">
+                        <div class="list-content">
+                            <h3>
+                                <?php echo $row['list_title'] ?>
+                            </h3>
+                            <br>
+                            <p>
+                                <?php $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                                    echo substr($content, 0, 200) ?>
+                            </p>
+
+                        </div>
+                        <div class="list-footer">
+                            <a href="contents/list.php?movieID=<?php echo $row['id'] ?>">Devamını Oku</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </section>
     <?php include 'partials/footer.php'; ?>

@@ -58,7 +58,14 @@
                         <a class="dropdown-item" href="new-on-show-movie.php">Movie</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="new-hero.php">Hero</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="new-list.php">List</a>
                     </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="signout.php">Sign Out</a>
                 </li>
             </ul>
         </div>
