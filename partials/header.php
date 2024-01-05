@@ -1,7 +1,7 @@
 <header>
     <div class="header-container">
         <div class="logo">
-            <h1><a href="#">ETHEREAL CIEASTE</a></h1>
+            <h1><a href="index.php">ETHEREAL CIEASTE</a></h1>
         </div>
         <nav>
             <ul>

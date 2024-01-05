@@ -155,7 +155,7 @@
                     ?>
 
                     <div class="swiper-slide">
-                        <a href="#">
+                        <a href="on-show.php">
                             <div class="on-show-slider-card">
                                 <div class="on-show-slider-card-image">
                                     <?php
