@@ -19,122 +19,75 @@
 <body>
     <?php include 'partials/header.php'; ?>
     <div class="on-show-main">
+
+        <?php
+        function getSymbolPath($tag)
+        {
+            $symbolPaths = [
+                '+7' => './assets/content-rating-system/7yas.png',
+                '+13' => './assets/content-rating-system/13yas.png',
+                '+18' => './assets/content-rating-system/18yas.png',
+                'genel' => './assets/content-rating-system/genel.png',
+                'olumsuz' => './assets/content-rating-system/olumsuz.png',
+                'siddet' => './assets/content-rating-system/siddet.png',
+            ];
+
+            return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
+        }
+        ?>
         <div class="on-show-container">
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
-                        
-                    </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php" id="test">incele</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
+            $result = $mysqli->query("SELECT * FROM on_show_movie ORDER BY id DESC LIMIT 20");
 
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
-                    </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php">incele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="on-show-card">
+                    <div class="on-show-card-image">
+                        <?php
 
-                    </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php">incele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
+                        $imageURL = str_replace('../', '', $row['card_image']);
 
-                    </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php">incele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
+                        echo '<img src="' . $imageURL . '" alt="" />';
 
+                        ?>
                     </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php">incele</a>
-                    </div>
-                </div>
-            </div>
-            <div class="on-show-card">
-                <div class="on-show-card-image">
-                    <img src="image/dogville.jpeg" alt="">
-                </div>
-                <div class="on-show-card-top-layer">
-                    <div class="on-show-card-symbols">
+                    <div class="on-show-card-top-layer">
+                        <div class="on-show-card-symbols">
 
-                    </div>
-                    <div class="on-show-card-text">
-                        <h3>Dogville</h3>
-                        <h4>Yönetmen: Lars von Trier</h4>
-                        <p>Süre: 178 dakika</p>
-                        <p>imdb: 8.0</p>
-                    </div>
-                    <div class="on-show-card-top-layer-btn">
-                        <a href="ehsh.php">incele</a>
+                            <?php
+
+                            $contentRatingTags = $row['content_rating_tags'];
+
+                            $tagsArray = explode(',', $contentRatingTags);
+
+                            foreach ($tagsArray as $tag) {
+                                $symbolPath = getSymbolPath($tag);
+
+                                echo '<img src="' . $symbolPath . '" alt="' . $tag . '" />';
+                            }
+                            ?>
+                        </div>
+                        <div class="on-show-card-text">
+                            <h3>
+                                <?php echo $row['movie_name'] ?>
+                            </h3>
+                            <h4>
+                                <?php echo $row['director_name'] ?>
+                            </h4>
+                            <p>
+                                <?php echo $row['genres']; ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
     <?php include 'partials/footer.php'; ?>

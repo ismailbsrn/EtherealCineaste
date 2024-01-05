@@ -15,7 +15,7 @@ if (isset($_GET['movieID'])) {
         $id = $row['id'];
         $entry_date = $row['entry_date'];
         $list_title = $row['list_title'];
-        $content = html_entity_decode($row['content']); // Decode the contents to display in browser    
+        $content = html_entity_decode($row['content']);
     }
 
 

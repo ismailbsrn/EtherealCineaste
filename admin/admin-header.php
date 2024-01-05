@@ -1,5 +1,4 @@
 <?php
-// admin_dashboard.php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -8,7 +7,6 @@ if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
-// Rest of the admin dashboard code
 ?>
 
 <!DOCTYPE html>

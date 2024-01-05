@@ -2,7 +2,7 @@
 $con = mysqli_connect("localhost", "root", "", "ethereal_cineaste");
 
 $stmt = $con->prepare("INSERT INTO `movie_reviews` (`movie_name`, `review_title`, `card_image`, `card_content`, `content`) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $movie_name, $review_title, $card_image , $card_content, $content);
+$stmt->bind_param("sssss", $movie_name, $review_title, $card_image, $card_content, $content);
 
 $movie_name = $_POST['movie_name'];
 $review_title = $_POST['review_title'];

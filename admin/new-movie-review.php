@@ -20,9 +20,8 @@
                     rows="1"></textarea>
             </div>
             <div class="mb-3">
-            <label for="image_location" class="form-label">Görselin Konumu</label>
-                <textarea class="form-control" id="image_location" name="image_location"
-                    rows="1" disabled></textarea>
+                <label for="image_location" class="form-label">Görselin Konumu</label>
+                <textarea class="form-control" id="image_location" name="image_location" rows="1" disabled></textarea>
             </div>
             <div class="mb-3">
                 <label for="card_content" class="form-label">İnceleme Kart Metni</label>

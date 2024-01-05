@@ -97,7 +97,6 @@
             var card_image = $('#image_location').val();
             var content_rating_tags = $('#content_rating_tags').val();
             var genres = $('#genres').val();
-            //var dataString = 'movie_review_editor=' + encodeURIComponent(movie_review_editor) + '&movie_name=' + encodeURIComponent(movie_name) + '&review_title=' + encodeURIComponent(review_title) + '&card_content=' + encodeURIComponent(card_content) + '&movie_review_card_image=' + encodeURIComponent(movie_review_card_image);
             var dataString = 'movie_name=' + encodeURIComponent(movie_name) + '&director_name=' + encodeURIComponent(director_name) + '&card_image=' + encodeURIComponent(card_image) + '&content_rating_tags=' + encodeURIComponent(content_rating_tags) + '&genres=' + encodeURIComponent(genres);
             if (movie_name == '' || director_name == '' || content_rating_tags == '' || genres == '' || card_image == '') {
                 $(".alert-box").html("<div class=\"alert alert-danger\">Tüm alanları doldurunuz</div>");

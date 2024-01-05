@@ -2,15 +2,13 @@
 $con = mysqli_connect("localhost", "root", "", "ethereal_cineaste");
 
 $stmt = $con->prepare("INSERT INTO `heros` (`hero_content`, `hero_description`) VALUES (?, ?)");
-$stmt->bind_param("ss", $image_editor, $description);
+$stmt->bind_param("ss", $hero_content, $hero_description);
 
-$description = $_POST['description'];
-$image_editor = $_POST['image_editor'];
-$image_editor = htmlspecialchars($image_editor, ENT_QUOTES, 'UTF-8');
+$hero_content = $_POST['image_location'];
+$hero_description = $_POST['description'];
 
 $stmt->execute();
 $a = $stmt->affected_rows;
-
 
 if ($a > 0) {
     echo "New record created successfully";

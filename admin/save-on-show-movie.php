@@ -19,6 +19,7 @@ if ($a > 0) {
     echo "Error: " . $con->error;
 }
 
+
 $stmt->close();
 $con->close();
 ?>

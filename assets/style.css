@@ -8,7 +8,6 @@
 
 :root::-webkit-scrollbar {
     width: 4px;
-
 }
 
 :root::-webkit-scrollbar-thumb {
@@ -28,7 +27,6 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    /* overflow-x: hidden; */
 }
 
 @media all and (min-width: 1024px) {
@@ -62,7 +60,7 @@
         width: 100% !important;
         height: auto !important;
         text-indent: -9999px;
-        background: url(../assets/test.svg) no-repeat center !important;
+        background: url(../assets/logo-mobile.svg) no-repeat center !important;
         background-size: contain;
     }
 
@@ -87,7 +85,7 @@
         width: 100% !important;
         height: auto !important;
         text-indent: -9999px;
-        background: url(../assets/test.svg) no-repeat center !important;
+        background: url(../assets/logo-mobile.svg) no-repeat center !important;
         background-size: contain;
     }
 
@@ -239,6 +237,15 @@
 }
 
 @media all and (max-width: 480px) {
+    .swiper-button-prev {
+        width: 10px !important;
+    }
+    .swiper-button-next {
+        width: 10px !important;
+    }
+    #on-show-slider {
+        width: 100% !important;
+    }
     header .header-container {
         width: 97% !important;
     }
@@ -254,7 +261,7 @@
         width: 100% !important;
         height: auto !important;
         text-indent: -9999px;
-        background: url(../assets/test.svg) no-repeat center !important;
+        background: url(../assets/logo-mobile.svg) no-repeat center !important;
         background-size: contain;
     }
 
@@ -491,7 +498,6 @@ header nav ul li a:hover {
     border-top: 1px solid var(--light-color) !important;
     visibility: hidden;
     transition: max-height 0.5s ease, visibility 0.5s ease;
-    /* added visibility transition */
 }
 
 .mobile-menu li {
@@ -502,7 +508,6 @@ header nav ul li a:hover {
     justify-content: center !important;
     align-items: center !important;
     transition: visibility 0.5s ease;
-    /* added visibility transition */
 }
 
 .mobile-menu li:last-child {
@@ -522,11 +527,9 @@ header nav ul li a:hover {
 
 .mobile-menu.menu-open {
     max-height: 500px;
-    /* adjust the value based on your content */
     display: flex !important;
     visibility: visible;
     transition: max-height 0.5s ease 0s, visibility 0.5s ease 0s !important;
-    /* specify 0s delay for closing transition */
 }
 
 .mobile-menu.menu-open li {
@@ -550,7 +553,6 @@ header nav ul li a:hover {
     max-width: 100%;
     max-height: 100%;
     margin: auto;
-    /* Küçük resimleri doldurmak için eklenen özellik */
 }
 
 .articles-title {
@@ -717,7 +719,6 @@ section.on-show .on-show-title h3 {
     height: 450px;
     transition: all 0.2s ease-in-out;
     position: relative;
-    /* Added position: relative for absolute positioning inside */
 }
 
 #on-show-slider .on-show-slider-card:hover {
@@ -1002,9 +1003,17 @@ footer .copy p {
 }
 
 .on-show-container .on-show-card .on-show-card-top-layer .on-show-card-symbols {
-    background: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     height: 100px;
     width: 100%;
+}
+
+.on-show-container .on-show-card .on-show-card-top-layer .on-show-card-symbols img {
+    width: 75px;
+    height: auto;
 }
 
 .on-show-container .on-show-card .on-show-card-top-layer .on-show-card-text {

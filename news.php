@@ -54,7 +54,7 @@
                                 </h3>
                                 <br>
                                 <p>
-                                    <?php $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                                    <?php $content = html_entity_decode($row['card_content']);
                                         echo substr($content, 0, 200) ?>
                                 </p>
 

@@ -22,17 +22,13 @@
     <section class="articles">
         <div class="article-container">
             <?php
-            // Connect to the MySQL server
             $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
-            // Get the last 6 rows from the movie_reviews table
             $result = $mysqli->query("SELECT * FROM movie_reviews ORDER BY id DESC LIMIT 6");
 
-            // Check for errors
             if (!$result) {
                 die("Failed to retrieve notes: " . $mysqli->error);
             }
 
-            // Loop through the result and display the rows
             while ($row = $result->fetch_assoc()) {
                 ?>
                 <div class="article">
@@ -52,7 +48,7 @@
                         <br>
                         <p>
                             <?php
-                            $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                            $content = html_entity_decode($row['card_content']);
                             echo substr($content, 0, 200);
                             ?>
                         </p>
@@ -68,11 +64,6 @@
             }
             ?>
         </div>
-        <div class="articles-footer">
-            <div class="articles-footer-btn">
-                <a href="reviews.php">tüm incelemeleri görüntüle</a>
-            </div>
-        </div>
     </section>
     <div id="markdown-container"></div>
 
@@ -82,8 +73,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-        <script src="assets/main.js"></script>
+
+    <script src="assets/main.js"></script>
 </body>
 
 </html>

@@ -2,15 +2,15 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// Check if the admin is logged in and has "root" access
+
 if (!isset($_SESSION['admin_id'])) {
     header("Location: login.php");
     exit();
 }
-if( $_SESSION['root'] != 1){
+
+if ($_SESSION['root'] != 1) {
     die("You don't have permission to access this page.");
 }
-
 ?>
 
 <?php include 'admin-header.php'; ?>

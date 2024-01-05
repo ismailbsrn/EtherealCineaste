@@ -1,16 +1,13 @@
 <?php
 session_start();
 
-// Replace these database connection details with your actual credentials
 $host = 'localhost';
 $user = 'root';
 $password = '';
 $database = 'ethereal_cineaste';
 
-// Create a connection to the database
 $connection = mysqli_connect($host, $user, $password, $database);
 
-// Check the connection
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -28,14 +25,13 @@ if ($row = mysqli_fetch_assoc($result)) {
         $_SESSION['admin_surname'] = $row['surname'];
         $_SESSION['root'] = $row['root'];
 
-        // Set cookie if "Remember Me" is checked
         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
             $cookie_name = 'admin_login';
             $cookie_value = base64_encode($row['id'] . '|' . $row['username']);
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 30 days
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
         }
 
-        header("Location: index.php"); // Redirect to the admin dashboard
+        header("Location: index.php");
     } else {
         echo "Invalid password!";
     }
@@ -43,6 +39,5 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo "Admin not found!";
 }
 
-// Close the database connection
 mysqli_close($connection);
 ?>

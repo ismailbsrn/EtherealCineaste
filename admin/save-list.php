@@ -2,7 +2,7 @@
 $con = mysqli_connect("localhost", "root", "", "ethereal_cineaste");
 
 $stmt = $con->prepare("INSERT INTO `lists` (`list_title`, `card_image`, `card_content`, `content`) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $list_title, $card_image , $card_content, $content);
+$stmt->bind_param("ssss", $list_title, $card_image, $card_content, $content);
 
 $list_title = $_POST['list_title'];
 $card_image = $_POST['list_card_image'];

@@ -12,8 +12,7 @@
             </div>
             <div class="mb-3">
                 <label for="list_card_image" class="form-label">Liste Kart Görseli</label>
-                <textarea class="form-control" id="list_card_image" name="list_card_image"
-                    rows="1"></textarea>
+                <textarea class="form-control" id="list_card_image" name="list_card_image" rows="1"></textarea>
             </div>
             <div class="mb-3">
                 <label for="image_location" class="form-label">Görselin Konumu</label>

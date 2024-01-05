@@ -146,6 +146,7 @@
             return false;
         });
     });
+    
 </script>
 
 <?php include 'admin-footer.php'; ?>

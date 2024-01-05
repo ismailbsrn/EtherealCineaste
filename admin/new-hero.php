@@ -11,6 +11,10 @@
                 <textarea class="form-control" id="image_editor" name="image_editor"></textarea>
             </div>
             <div class="mb-3">
+                <label for="image_location" class="form-label">Görselin Konumu</label>
+                <textarea class="form-control" id="image_location" name="image_location" rows="1" disabled></textarea>
+            </div>
+            <div class="mb-3">
                 <label for="description" class="form-label">Görsel Açıklaması</label>
                 <textarea class="form-control" id="description" name="description" rows="1"></textarea>
             </div>
@@ -28,27 +32,20 @@
             tabsize: 2,
             height: 20,
             toolbar: [
-                // ['style', ['style']],
-                // ['font', ['bold', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript', 'clear']],
-                // ['fontname', ['fontname']],
-                // ['color', ['color']],
-                // ['para', ['ul', 'ol', 'paragraph']],
-                // ['table', ['table']],
                 ['insert', ['picture']],
-                // ['view', ['fullscreen', 'codeview', 'help']]
             ],
             callbacks: {
                 onImageUpload: function (files) {
                     for (let i = 0; i < files.length; i++) {
-                        $.upload(files[i]);
+                        $.uploadCardImage(files[i]);
                     }
                 }
             }
         });
 
-        $.upload = function (file) {
-            let out = new FormData();
-            out.append('file', file, file.name);
+        $.uploadCardImage = function (file) {
+            let cardimage = new FormData();
+            cardimage.append('file', file, file.name);
 
             $.ajax({
                 method: 'POST',
@@ -56,9 +53,9 @@
                 contentType: false,
                 cache: false,
                 processData: false,
-                data: out,
+                data: cardimage,
                 success: function (img) {
-                    $('#image_editor').summernote('insertImage',img);
+                    $('#image_location').val(img);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.error(textStatus + " " + errorThrown);
@@ -68,16 +65,16 @@
 
         $("#save-btn").click(function (e) {
             e.preventDefault();
-            var image_editor = $('#image_editor').summernote('code');
+            var image_editor = $('#image_location').val();
             var description = $('#description').val();
-            var dataString = 'image_editor=' + encodeURIComponent(image_editor) + '&description=' + encodeURIComponent(description);
+            var dataString = 'image_location=' + encodeURIComponent(image_editor) + '&description=' + encodeURIComponent(description);
             if (image_editor == '' || description == '') {
                 $(".alert-box").html("<div class=\"alert alert-danger\">Tüm alanları doldurunuz</div>");
             }
             else {
                 $.ajax({
                     type: "POST",
-                    url: "save-new-hero.php",
+                    url: "save-hero.php",
                     data: dataString,
                     cache: false,
                     success: function (result) {
@@ -88,6 +85,7 @@
             return false;
         });
     });
+
 </script>
 
 <?php include 'admin-footer.php'; ?>

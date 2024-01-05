@@ -27,36 +27,36 @@
         <!-- Wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide">
-                <a href="">
-                    <div class="slide-image">
-                        <img src="image/slider/persona.jpg" alt="">
-                    </div>
-                    <div class="slide-content">
+            <?php
+            $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
+            $result = $mysqli->query("SELECT * FROM heros ORDER BY id DESC LIMIT 6");
 
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <div class="slide-image">
-                        <img src="image/slider/seventhseal.jpg" alt="">
-                    </div>
-                    <div class="slide-content">
+            if (!$result) {
+                die("Failed to retrieve notes: " . $mysqli->error);
+            }
 
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide">
-                <a href="">
-                    <div class="slide-image">
-                        <img src="image/slider/satantango.jpg" alt="">
-                    </div>
-                    <div class="slide-content">
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <div class="swiper-slide">
+                    <a href="">
+                        <div class="slide-image">
+                            <?php
 
-                    </div>
-                </a>
-            </div>
+                            $imageURL = str_replace('../', '', $row['hero_content']);
+
+                            echo '<img src="' . $imageURL . '" alt="" />';
+
+                            ?>
+                        </div>
+                        <div class="slide-content">
+
+                        </div>
+                    </a>
+                </div>
+                <?php
+            }
+            ?>
+
         </div>
     </div>
 
@@ -67,17 +67,13 @@
         </div>
         <div class="article-container">
             <?php
-            // Connect to the MySQL server
             $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
-            // Get the last 6 rows from the movie_reviews table
             $result = $mysqli->query("SELECT * FROM movie_reviews ORDER BY id DESC LIMIT 6");
 
-            // Check for errors
             if (!$result) {
                 die("Failed to retrieve notes: " . $mysqli->error);
             }
 
-            // Loop through the result and display the rows
             while ($row = $result->fetch_assoc()) {
                 ?>
                 <div class="article">
@@ -97,7 +93,7 @@
                         <br>
                         <p>
                             <?php
-                            $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
+                            $content = html_entity_decode($row['card_content']);
                             echo substr($content, 0, 200);
                             ?>
                         </p>
@@ -130,18 +126,28 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <?php
-                // Connect to the MySQL server
+                function getSymbolPath($tag)
+                {
+                    $symbolPaths = [
+                        '+7' => './assets/content-rating-system/7yas.png',
+                        '+13' => './assets/content-rating-system/13yas.png',
+                        '+18' => './assets/content-rating-system/18yas.png',
+                        'genel' => './assets/content-rating-system/genel.png',
+                        'olumsuz' => './assets/content-rating-system/olumsuz.png',
+                        'siddet' => './assets/content-rating-system/siddet.png',
+                    ];
+
+                    return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
+                }
+                ?>
+                <?php
                 $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
-                // Get the last 10 rows from the movie_reviews table
                 $result = $mysqli->query("SELECT * FROM on_show_movie ORDER BY id DESC LIMIT 10");
 
-                // Check for errors
                 if (!$result) {
                     die("Failed to retrieve notes: " . $mysqli->error);
                 }
 
-
-                // Loop through the result and display the rows
                 while ($row = $result->fetch_assoc()) {
                     if ($row['on_show'] == 0) {
                         continue;
@@ -162,36 +168,17 @@
                                 </div>
                                 <div class="on-show-slider-card-top-layer">
                                     <div class="on-show-slider-card-symbols">
-                                        <?php
-                                        function getSymbolPath($tag)
-                                        {
-                                            $symbolPaths = [
-                                                '18yasveuzeri' => './assets/content-rating-system/18yas.png',
-                                                'cinsellik' => './assets/content-rating-system/cinsellik.png',
-                                                'siddet' => './assets/content-rating-system/siddet.png',
-                                                'olumsuz' => './assets/content-rating-system/olumsuz.png',
-                                                // Add more mappings as needed
-                                            ];
 
-                                            // Check if the tag exists in the mapping, if not, use a default symbol
-                                            return isset($symbolPaths[$tag]) ? $symbolPaths[$tag] : './assets/content-rating-system/genel.png';
-                                        }
-                                        ?>
 
                                         <?php
 
-                                        // Get the content rating tags from the database
                                         $contentRatingTags = $row['content_rating_tags'];
 
-                                        // Split the tags into an array
                                         $tagsArray = explode(',', $contentRatingTags);
 
-                                        // Loop through each tag and display the corresponding symbol
                                         foreach ($tagsArray as $tag) {
-                                            // Map the tag to the corresponding symbol file path
                                             $symbolPath = getSymbolPath($tag);
 
-                                            // Display the symbol image
                                             echo '<img src="' . $symbolPath . '" alt="' . $tag . '" />';
                                         }
                                         ?>
@@ -217,6 +204,7 @@
                 ?>
 
         </div>
+
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
 
@@ -228,7 +216,7 @@
     </section>
 
     <section class="news-section">
-    <div class="news-title">
+        <div class="news-title">
             <h3>HABERLER</h3>
         </div>
         <div class="news-container">
@@ -264,8 +252,8 @@
                             </h3>
                             <br>
                             <p>
-                                <?php $content = html_entity_decode($row['card_content']); // Decode the contents to display in browser
-                                    echo substr($content, 0, 200) ?>
+                                <?php $content = html_entity_decode($row['card_content']);
+                                echo substr($content, 0, 200) ?>
                             </p>
 
                         </div>
