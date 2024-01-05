@@ -138,6 +138,7 @@
         </div>
     </div>
     <?php include 'partials/footer.php'; ?>
+    <script src="assets/main.js"></script>
 </body>
 
 </html>

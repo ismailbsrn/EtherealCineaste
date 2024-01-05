@@ -53,6 +53,7 @@ if (isset($_GET['movieID'])) {
     </div>
 
     <?php include '../partials/footer.php'; ?>
+    <script src="assets/main.js"></script>
 </body>
 
 </html>

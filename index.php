@@ -60,8 +60,11 @@
         </div>
     </div>
 
-    <br><br><br><br><br>
+
     <section class="articles">
+        <div class="articles-title">
+            <h3>İNCELEMELER</h3>
+        </div>
         <div class="article-container">
             <?php
             // Connect to the MySQL server
@@ -225,13 +228,15 @@
     </section>
 
     <section class="news-section">
-
+    <div class="news-title">
+            <h3>HABERLER</h3>
+        </div>
         <div class="news-container">
             <br><br>
             <?php
             $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
 
-            $result = $mysqli->query("SELECT * FROM movie_news ORDER BY id DESC LIMIT 6");
+            $result = $mysqli->query("SELECT * FROM movie_news ORDER BY id DESC LIMIT 3");
 
             if (!$result) {
                 die("Failed to retrieve notes: " . $mysqli->error);
@@ -284,6 +289,7 @@
     <?php include 'partials/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="assets/main.js"></script>
 </body>
 

@@ -46,5 +46,23 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  //sandwich menu
+  var menuButton = document.getElementById('menuButton');
+  var mobileMenu = document.querySelector('.mobile-menu');
 
+  // Open menu on button click
+  menuButton.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document
+    mobileMenu.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking anywhere on the page
+  document.addEventListener('click', function (event) {
+    var isClickInsideMenu = mobileMenu.contains(event.target);
+    var isClickOnMenuButton = menuButton.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnMenuButton) {
+      mobileMenu.classList.remove('menu-open');
+    }
+  });
 });

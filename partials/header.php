@@ -9,7 +9,7 @@
                 <li><a href="reviews.php">incelemeler</a></li>
                 <li><a href="news.php">haberler</a></li>
                 <li><a href="lists.php">listeler</a></li>
-                <li><a href="#"><span class="material-symbols-outlined sandvich-menu-button">menu</span></a></li>
+                <li><a href="#"><span class="material-symbols-outlined sandvich-menu-button" id="menuButton">menu</span></a></li>
             </ul>
         </nav>
     </div>
