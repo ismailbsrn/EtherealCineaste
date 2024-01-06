@@ -22,7 +22,7 @@
     <div class="news-main">
         <br><br><br><br>
         <section class="news-section">
-            <div class="news-container">
+            <div class="news-container" id="ss">
                 <?php
                 $mysqli = new mysqli("localhost", "root", "", "ethereal_cineaste");
 

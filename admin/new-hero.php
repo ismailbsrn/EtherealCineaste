@@ -18,7 +18,7 @@
                 <label for="description" class="form-label">Görsel Açıklaması</label>
                 <textarea class="form-control" id="description" name="description" rows="1"></textarea>
             </div>
-            <button type="submit" id="save-btn" class="btn btn-secondary">
+            <button type="submit" id="save-btn" class="btn btn-secondary mb-5">
                 Submit
             </button>
         </form>

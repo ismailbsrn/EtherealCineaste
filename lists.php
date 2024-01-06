@@ -50,7 +50,12 @@
                             <br>
                             <p>
                                 <?php $content = html_entity_decode($row['card_content']);
-                                    echo substr($content, 0, 200) ?>
+                                echo substr($content, 0, 200);
+                                if (strlen($content) > 200) {
+                                    echo "...";
+                                }
+
+                                ?>
                             </p>
 
                         </div>

@@ -42,7 +42,7 @@
             <label for="genres" class="form-label">Tür</label>
             <textarea class="form-control" id="genres" rows="1"></textarea>
         </div>
-        <button type="submit" id="save-btn" class="btn btn-secondary" data-bs-toggle="modal"
+        <button type="submit" id="save-btn" class="btn btn-secondary mb-5" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop">
             Submit
         </button>

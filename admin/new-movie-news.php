@@ -31,7 +31,7 @@
                 <label for="movie_news_editor" class="form-label">Haber Metni</label>
                 <textarea class="form-control" id="movie_news_editor" name="movie_news_editor" rows="6"></textarea>
             </div>
-            <button type="submit" id="save-btn" class="btn btn-secondary">
+            <button type="submit" id="save-btn" class="btn btn-secondary mb-5">
                 Submit
             </button>
         </form>

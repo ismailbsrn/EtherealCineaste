@@ -31,7 +31,7 @@
                 <label for="movie_review_editor" class="form-label">İnceleme Metni</label>
                 <textarea class="form-control" id="movie_review_editor" name="movie_review_editor" rows="6"></textarea>
             </div>
-            <button type="submit" id="save-btn" class="btn btn-secondary">
+            <button type="submit" id="save-btn" class="btn btn-secondary mb-5">
                 Submit
             </button>
         </form>

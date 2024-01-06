@@ -88,20 +88,23 @@
                     </div>
                     <div class="article-content">
                         <h3>
-                            <?php echo $row['movie_name'] ?>
+                            <?php echo $row['review_title'] ?>
                         </h3>
                         <br>
                         <p>
                             <?php
                             $content = html_entity_decode($row['card_content']);
                             echo substr($content, 0, 200);
+                            if (strlen($content) > 200) {
+                                echo '...';
+                            }
                             ?>
                         </p>
 
                     </div>
                     <div class="article-footer">
                         <a href="#" class="read-more-link" data-movie-id="movie1"
-                            onclick="window.location.href='reviews/review.php?movieID=<?php echo $row['id']; ?>'">devamını
+                            onclick="window.location.href='contents/review.php?movieID=<?php echo $row['id']; ?>'">devamını
                             gör</a>
                     </div>
                 </div>
@@ -253,7 +256,12 @@
                             <br>
                             <p>
                                 <?php $content = html_entity_decode($row['card_content']);
-                                echo substr($content, 0, 200) ?>
+                                echo substr($content, 0, 200);
+                                if (strlen($content) > 200) {
+                                    echo '...';
+                                }
+                                ?>
+
                             </p>
 
                         </div>

@@ -26,7 +26,7 @@
                 <label for="list_editor" class="form-label">Liste Metni</label>
                 <textarea class="form-control" id="list_editor" name="list_editor" rows="6"></textarea>
             </div>
-            <button type="submit" id="save-btn" class="btn btn-secondary">
+            <button type="submit" id="save-btn" class="btn btn-secondary mb-5">
                 Submit
             </button>
         </form>

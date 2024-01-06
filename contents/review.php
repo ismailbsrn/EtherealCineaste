@@ -50,6 +50,15 @@ if (isset($_GET['movieID'])) {
 <body>
     <?php include '../partials/header.php'; ?>
     <div id="markdown-container">
+        <h1>
+            <?php echo $review_title; ?>
+        </h1>
+        <br>
+        <h2>
+            <?php echo $movie_name; ?>
+        </h2>
+        <br>
+        <br>
         <?php echo $content; ?>
     </div>
 
