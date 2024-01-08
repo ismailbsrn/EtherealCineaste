@@ -79,7 +79,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: 'upload-news-image.php',
+                url: 'upload-list-image.php',
                 contentType: false,
                 cache: false,
                 processData: false,
