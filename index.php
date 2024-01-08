@@ -277,7 +277,7 @@
         </div>
         <div class="news-section-footer">
             <div class="news-section-footer-btn">
-                <a href="#">tüm haberleri görüntüle</a>
+                <a href="news.php">tüm haberleri görüntüle</a>
             </div>
         </div>
     </section>
