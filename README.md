@@ -1,0 +1,1 @@
+Projenin sunumu için about.pdf dosyasına bakınız.
